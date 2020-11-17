@@ -10,7 +10,6 @@ arr = []
 for i in range(n):
     arr.append(list(map(int, sys.stdin.readline().rstrip().split())))
 
-steps = [0, 1, 2, 3]
 dx = [-1, 0, 1, 0]
 dy = [0, 1, 0, -1]
 
