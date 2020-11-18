@@ -1,3 +1,4 @@
+'''오답 풀이. 다시 풀기'''
 import sys, itertools
 n, m = map(int, input().split())
 arr = []
