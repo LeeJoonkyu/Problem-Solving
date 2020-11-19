@@ -1,4 +1,3 @@
-''' 답안 참고한 풀이 '''
 import sys, itertools
 import copy
 n, m = map(int, input().split())
@@ -13,7 +12,7 @@ def count_distance(h, c):
 
 home = []
 chicken = []
-cd = [[0]*m for _ in range(n)]
+cd = [[0]*n for _ in range(n)]
 for i in range(n):
     for j in range(n):
         if arr[i][j] == 1:
@@ -36,23 +35,20 @@ if len(chicken) > m:  # 폐업 시켜야하는 경우
             if close not in c:
                 tmp_chicken.remove(close)
 
-        print(tmp_chicken)
-        d = 0x7fffffff
         for h in home:
             '''어떤 집 하나의 치킨거리를 구한다'''
+            d = 0x7fffffff
             for tc in tmp_chicken:
                 d = min(count_distance(h, tc), d)
-            print(h)
             cd[h[0]-1][h[1]-1] = d
-
 
         '''모든 집의 치킨거리가 나온 상태'''
         mn = min(list_sum(cd), mn)
         tmp_chicken = copy.deepcopy(chicken)
     print(mn)
 else:  # 폐업 안시키는 경우 각 집의 치킨거리의 합이 곧 도시의 치킨 거리
-    d = 0x7fffffff
     for h in home:
+        d = 0x7fffffff
         for c in chicken:
             d = min(count_distance(h, c), d)
         cd[h[0]-1][h[1]-1] = d
